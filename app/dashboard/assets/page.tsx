@@ -1,6 +1,7 @@
 "use client";
 
 import { fetchAssets } from "@/app/lib/api";
+import AddAssetForm from "@/components/AddAssetForm";
 import { useQuery } from "@tanstack/react-query";
 
 type Asset = {
@@ -21,6 +22,10 @@ export default function AssetsPage() {
     queryFn: fetchAssets,
   });
 
+  const handleAddAsset = (data: any) => {
+    console.log('new asset: ', data);
+  }
+
   if (isLoading) return <p>Loading assets...</p>;
 
   if (isError) {
@@ -34,6 +39,11 @@ export default function AssetsPage() {
   return (
     <div className="h-screen">
       <h1 className="text-xl font-bold mb-4 text-black">Assets</h1>
+
+      {/*add asset---------------------*/}
+      <AddAssetForm onAdd={handleAddAsset}/>
+      
+      {/*assets---------------------*/}
 
       <table className="w-full border border-blue-900">
         <thead className="bg-blue-400">
