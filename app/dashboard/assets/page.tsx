@@ -1,8 +1,9 @@
 "use client";
 
 import { fetchAssets } from "@/app/lib/api";
+import { AssetFormData } from "@/app/lib/schema";
 import AddAssetForm from "@/components/AddAssetForm";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 type Asset = {
   id: number;
@@ -12,6 +13,8 @@ type Asset = {
 };
 
 export default function AssetsPage() {
+  const queryClient = useQueryClient();
+
   const {
     data: assets,
     isLoading,
@@ -22,8 +25,17 @@ export default function AssetsPage() {
     queryFn: fetchAssets,
   });
 
-  const handleAddAsset = (data: any) => {
-    console.log('new asset: ', data);
+  const handleAddAsset = (data: AssetFormData) => {
+    const newAsset: Asset = {
+      id: Date.now(), //fake id
+      name: data.name,
+      type: data.type,
+      status: 'Active',
+    };
+
+    queryClient.setQueryData<Asset[]>(['assets'], (old) => {
+      return old ? [newAsset, ...old] : [newAsset];
+    });
   }
 
   if (isLoading) return <p>Loading assets...</p>;
