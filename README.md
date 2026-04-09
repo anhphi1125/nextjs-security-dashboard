@@ -2,34 +2,119 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+# Next.js Security Dashboard
+
+A modern frontend dashboard project built with Next.js, TypeScript, and Tailwind CSS to simulate a security monitoring platform.
+
+## Overview
+
+This project demonstrates a production-style dashboard with:
+
+* Shared dashboard layout (sidebar + header)
+* Asset monitoring page
+* Data fetching with React Query
+* Skeleton loading states
+* Add Asset form with validation
+* Optimistic UI updates
+* Simulated real-time alerts
+
+## Tech Stack
+
+* Next.js (App Router)
+* TypeScript
+* Tailwind CSS
+* React Query
+* React Hook Form
+* Zod
+
+## Features
+
+### Dashboard Layout
+
+* Responsive sidebar and header
+* Nested routing with shared layout
+
+### Asset Management
+
+* Fetch fake asset data from API route
+* Display assets in table format
+* Loading skeleton while fetching
+* Error handling and retry support
+
+### Add Asset Form
+
+* Add new assets instantly
+* Form validation with Zod
+* Clean and reusable form component
+
+### Optimistic UI
+
+* New assets appear immediately without page reload
+* React Query cache update
+
+### Real-time Alerts
+
+* Simulated live alerts using setInterval
+* Dynamic alert list updates
+
+## Project Structure
+
+```txt
+app/
+ ├── dashboard/
+ │   ├── layout.tsx
+ │   ├── page.tsx
+ │   └── assets/
+ │       └── page.tsx
+ ├── api/
+ │   └── assets/
+ │       └── route.ts
+ └── lib/
+     └── schema.ts
+
+components/
+ ├── Sidebar.tsx
+ ├── Header.tsx
+ ├── AddAssetForm.tsx
+ ├── AssetsTable.tsx
+ ├── AssetsTableSkeleton.tsx
+ └── RealTimeAlerts.tsx
+```
+
+## Getting Started
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Open in browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000/dashboard
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Learning Outcomes
 
-## Learn More
+* Built reusable UI components
+* Improved state management with React Query
+* Practiced form validation and clean architecture
+* Simulated real-time frontend behavior
+* Applied modern frontend best practices
 
-To learn more about Next.js, take a look at the following resources:
+## Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Đào Thị Ánh Phi
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* GitHub: [https://github.com/anhphi1125](https://github.com/anhphi1125)
 
-## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
